@@ -537,7 +537,8 @@ public class SceneSerializer {
                 position = vertices.position;
             }
 
-            final var indices = serializeIndexArray(indexArray, project, buffer, new IndexRange(startIndex, endIndex), position);
+            var range = startIndex > 0 && endIndex > 0 ? new IndexRange(startIndex, endIndex) : null;
+            var indices = serializeIndexArray(indexArray, project, buffer, range, position);
             if (buffer != null) {
                 position = indices.position;
             }
